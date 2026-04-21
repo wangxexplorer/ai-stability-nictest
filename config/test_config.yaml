@@ -1,0 +1,43 @@
+# 测试拓扑配置
+topology:
+  device_role: "dut"
+  connection_mode: "direct"
+
+# 网卡配置 (示例)
+nics:
+  - name: "eth0"
+    pci: "0000:01:00.0"
+    driver: "kernel"
+    speed: "25G"
+    tester_port: "eth0"
+
+# 设备连接信息
+devices:
+  dut:
+    ip: "192.168.1.10"
+    user: "root"
+    password: "password"
+    ssh_port: 22
+  tester:
+    ip: "192.168.1.11"
+    user: "root"
+    password: "password"
+    ssh_port: 22
+  monitor:
+    ip: "192.168.1.12"
+    prometheus_url: "http://192.168.1.12:9090"
+
+# 全局测试参数
+test_parameters:
+  sample_interval: "10s"
+  default_duration: "4h"
+  default_bandwidth_target: "80%"
+
+# 验证阈值
+thresholds:
+  packet_loss_rate: "0.1%"
+  latency_jitter: "20%"
+  bandwidth_achievement: "95%"
+  cpu_usage_max: "80%"
+  memory_growth_max: "10%"
+  nic_errors_max: 0
